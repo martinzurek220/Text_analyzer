@@ -44,8 +44,8 @@ str_username_zadany = input("username:")
 str_password_zadany = input("password:")
 # str_password_zadany = "123"
 
-print(f"username:{str_username_zadany}")
-print(f"password:{str_password_zadany}")
+# print(f"username:{str_username_zadany}")
+# print(f"password:{str_password_zadany}")
 
 bool_podminka_pokracovani = False
 
@@ -64,9 +64,9 @@ for str_uzivatel in dict_uzivatele.keys():
                 "We have 3 texts to be analyzed.", "\n",
                 "-" * 40, sep='')
 
-            # xx_cislo_textu = input("Enter a number btw. 1 and 3 to select:")
-            xx_cislo_textu = "3"
-            print("Enter a number btw. 1 and 3 to select:", xx_cislo_textu)
+            xx_cislo_textu = input("Enter a number btw. 1 and 3 to select:")
+            # xx_cislo_textu = "3"
+            # print("Enter a number btw. 1 and 3 to select:", xx_cislo_textu)
 
             # Jsou uzivatelem zadana cisla textu pouze cisla 0-9?
             if xx_cislo_textu.isdecimal() == True:
@@ -129,7 +129,7 @@ in modern oceans. Other fish such as paddlefish,
 garpike and stingray are also present.'''
 ]
 
-    int_cislo_textu = 1
+    # int_cislo_textu = 1
 
     # Do promenne str_zadany_text se ulozi text podle volby uzivatele.
     if int_cislo_textu == 1:
