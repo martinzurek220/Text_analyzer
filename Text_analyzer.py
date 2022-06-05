@@ -11,8 +11,6 @@ discord: MartinZ#0894
 # Vim, ze nazvy promennych jsou dlouhe a na zacatku by nemusel byt datovy typ,
 # ale tento zapis je pro me vyrazne pochopitelnejsi v tom, co kod dela 
 # a urychluje mi to, alespon ted na zacatku, hledani chyb.
-#
-# Nekde jsem nedodrzel pravidlo 79 znaku na rakek.
 
 # Poznamka:
 #
@@ -47,7 +45,7 @@ str_password_zadany = input("password:")
 # print(f"username:{str_username_zadany}")
 # print(f"password:{str_password_zadany}")
 
-bool_podminka_pokracovani = False
+bool_registrace_uzivatele_ok = False
 
 # Cyklus nacte jednotlive klice slovniku. "Uzivatel_1" az "Uzivatel_4" a pote
 # porovnava data jednotlivych uzivatelu s tim, co zadal uzivatel na klavesnici.
@@ -60,9 +58,10 @@ for str_uzivatel in dict_uzivatele.keys():
         if str_password_zadany == dict_uzivatele[str_uzivatel]["password"]:
 
             print("-" * 40,"\n",
-                "Welcome to the app, ", str_username_zadany , "\n",
-                "We have 3 texts to be analyzed.", "\n",
-                "-" * 40, sep='')
+                  "Welcome to the app, ", str_username_zadany , "\n",
+                  "We have 3 texts to be analyzed.", "\n",
+                  "-" * 40, sep=''
+            )
 
             xx_cislo_textu = input("Enter a number btw. 1 and 3 to select:")
             # xx_cislo_textu = "3"
@@ -78,12 +77,15 @@ for str_uzivatel in dict_uzivatele.keys():
                         
                     int_cislo_textu = int(xx_cislo_textu)
 
-                    # Nastaveni podminky pro pokracovani dale na praci s textem.
-                    bool_podminka_pokracovani = True
+                    # Nastaveni podminky pro pokracovani dale na praci 
+                    # s textem.
+                    bool_registrace_uzivatele_ok = True
                 else:
-                    print("You entered a number other than 1, 2, 3, terminating the program..", "\n")
+                    print("You entered a number other than 1, 2, 3",
+                          "terminating the program..", "\n")
             else:
-                print("You did not enter a number, terminating the program..", "\n")            
+                print("You did not enter a number,", 
+                      "terminating the program..", "\n")            
         else:
             print("Wrong password, terminating the program..", "\n")
         # Pokud jsme uzivatele nasli, vyskoc z cyklu.
@@ -99,7 +101,7 @@ else:
 # Pokud jsou splneny vsechny podminky pro pokracovani 
 # (je spravne zadany login, heslo a zadany text je 1 nebo 2 nebo 3), 
 # tak pokracuj dale na praci s textem.
-if bool_podminka_pokracovani:
+if bool_registrace_uzivatele_ok:
 
     # Vyber textu.
     dict_TEXTS = ['''Situated about 10 miles west of Kemmerer,
@@ -186,9 +188,13 @@ garpike and stingray are also present.'''
 
     for str_list_slovo in list_rozdeleny_text:
 
+        # Pokud je na pozici v listu typ list, tak:
         if type(str_list_slovo) == list:
+
+            # Projde cely list a ulozi ho postupne do listu 
             for int_index_listu in range(0, len(str_list_slovo)):
                 list_docasny.append(str_list_slovo[int_index_listu])
+
         else:
             list_docasny.append(str_list_slovo)
 
@@ -289,8 +295,8 @@ garpike and stingray are also present.'''
 
     # print(f"novy_list: {novy_list}")
 
-    # Cyklus vypocita pocet hvezdicek, mezer a vykresli sloupcovy graf.
-    int_odsazeni = 20 # Pocet znaku mezi svislymi carami: x|     |x 
+    # Pocet znaku mezi svislymi carami: x|     |x
+    int_odsazeni = 20  
 
     # Vypocet mezery vlevo od OCCURENCES.
     str_mezera = " " * ((int_odsazeni - 10) // 2)
@@ -302,6 +308,7 @@ garpike and stingray are also present.'''
     print(f"LEN|{str_mezera}OCCURENCES{str_zbytek}|NR.")
     print("-" * 40)
 
+    # Cyklus vypocita pocet hvezdicek, mezer a vykresli sloupcovy graf.
     for int_idx in range(1, len(novy_list)):
         
         # Doplni pocet hvezdicek podle poctu slov v dane kategorii.
@@ -313,6 +320,8 @@ garpike and stingray are also present.'''
         
         # Pokud je cislo od 1 do 9 tak posun zobrazeni o tri znak doprava.
         if int_idx <= 9:
-            print(f"  {int_idx}|{str_pocet_hvezdicek}{str_mezera}|{novy_list[int_idx]}")     
+            print(f"  {int_idx}|{str_pocet_hvezdicek}",  
+                  f"{str_mezera}|{novy_list[int_idx]}", sep = "")     
         else: 
-            print(f" {int_idx}|{str_pocet_hvezdicek}{str_mezera}|{novy_list[int_idx]}")
+            print(f" {int_idx}|{str_pocet_hvezdicek}"
+                  f"{str_mezera}|{novy_list[int_idx]}", sep = "")
